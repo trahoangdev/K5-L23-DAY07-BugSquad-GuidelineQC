@@ -31,9 +31,13 @@ def main() -> None:
                     "mutable": False,
                     "input_type": a["type"],
                     "default_value": str(a.get("default", "")),
-                    "values": [str(v) for v in a.get("values", [])] if a["type"] == "select" else [],
+                    # CVAT Raw expects a non-empty values list for checkboxes;
+                    # taxonomy keeps [] because a checkbox is not a select.
+                    "values": [str(v) for v in a.get("values", [])]
+                    if a["type"] == "select" else [str(a["default"])],
                 })
-        labels.append({"name": name, "color": "#808080" if name == tax.ignore else COLORS[i % len(COLORS)],
+        labels.append({"name": name, "type": "rectangle",
+                       "color": "#808080" if name == tax.ignore else COLORS[i % len(COLORS)],
                        "attributes": attrs})
     text = json.dumps(labels, ensure_ascii=False, indent=2)
     out = ROOT / "cvat" / ("labels_final.json" if args.final else "labels_generated.json")

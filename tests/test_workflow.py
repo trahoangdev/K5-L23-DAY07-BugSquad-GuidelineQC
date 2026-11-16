@@ -338,6 +338,26 @@ class WorkflowTest(unittest.TestCase):
         self.write_json(self.tax, data)
         self.run_script("make_cvat_labels", success=False)
 
+    def test_cvat_labels_preserve_checkbox_defaults_and_rectangle_type(self):
+        for default in ("false", "true"):
+            with self.subTest(default=default):
+                taxonomy = json.loads(self.tax.read_text(encoding="utf-8"))
+                checkbox = next(attr for attr in taxonomy["attributes"] if attr["name"] == "can_review")
+                checkbox["default"] = default
+                self.write_json(self.tax, taxonomy)
+                self.run_script("make_cvat_labels")
+                labels = json.loads((self.root / "cvat" / "labels_generated.json").read_text(encoding="utf-8"))
+                for label in labels:
+                    self.assertEqual(label["type"], "rectangle")
+                    if label["name"] == taxonomy["ignore_class"]:
+                        self.assertEqual(label["attributes"], [])
+                        continue
+                    exported = next(attr for attr in label["attributes"] if attr["name"] == "can_review")
+                    self.assertEqual(exported["input_type"], "checkbox")
+                    self.assertEqual(exported["default_value"], default)
+                    self.assertEqual(exported["values"], [default])
+                self.assertEqual(json.loads(self.tax.read_text(encoding="utf-8")), taxonomy)
+
     def test_empty_images_are_valid_with_no_box_agreement_value(self):
         self.assignments()
         for member in ("101", "102"):
