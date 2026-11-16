@@ -1,0 +1,12 @@
+image,annotator,region,note
+img_005.jpg,111,Kính trước/bên phải xe van phía sau nhóm người,"R-12/R-13: vùng giống đầu người chưa phân biệt được người thật sau kính với ghế/phản chiếu; không giữ person suy đoán, cần chốt từ ảnh gốc."
+img_006.jpg,111,"Mảnh phương tiện màu xanh ở nền giữa, phía sau người đi xe",R-12: chưa có cấu trúc/biên đủ tin cậy để chọn car/van/truck; không ép lớp từ mảng màu nhỏ.
+img_009.jpg,111,"Vùng rất xa bên trái, phía trên bảng hàng/quầy",R-12: ứng viên giống người chưa phân biệt được người thật với hình/vật nền; chưa dựng person.
+img_011.jpg,111,Các kết cấu dạng mô tô bằng kim loại ở tiền cảnh khu trưng bày,R-01/R-12: chưa xác định là tác phẩm mô phỏng hay phương tiện thật hoàn chỉnh; không suy motorcycle chỉ từ hình dáng.
+img_015.jpg,111,"Vệt phương tiện nhòe ở giữa ảnh, trước dãy xe đỗ","R-10/R-12: chưa có biên một vật đáng tin; đã bỏ box dựng trên vệt nhòe, cần chốt có đủ bằng chứng gán hay không."
+img_015.jpg,111,Vệt tối phía phải sau xe bạc tiền cảnh,R-10/R-12: thiếu cấu trúc/biên để phân lớp một phương tiện riêng; không ép car và không dùng ignore cho nhòe đơn lẻ.
+img_030.jpg,111,Vùng giống mũ/đốm đỏ ở nền xa bên phải,R-06/R-12: chưa liên kết được với đầu/cơ thể người thật; không suy person chỉ từ mũ.
+img_032.jpg,111,Mảnh xe phía sau nhóm người bên trái hàng chờ,R-12/R-13: chưa có biên/lớp tin cậy qua các người che; không giữ box car trên vùng lẫn người/xe.
+img_035.jpg,111,Vùng kính trước tuk-tuk chở hàng ở giữa-trái,R-12/R-13: vùng giống mặt có thể là vật trang trí/ghế; không suy tài xế khi chưa nhận ra người thật.
+img_035.jpg,111,Kính trước tuk-tuk phía sau người đi xe máy bên phải,"R-12/R-13: chưa có bằng chứng đủ rõ về người thật và biên phần nhìn thấy, không giữ person suy đoán."
+img_039.jpg,111,Vùng giống người gần xe trắng ở nền sau người đi scooter,R-12/R-13: phần giống đầu/cơ thể chưa tách khỏi xe/gương; chưa có box person đáng tin.
